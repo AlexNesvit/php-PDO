@@ -2,11 +2,11 @@
 
 ----
 
-### <div align="center">I created Submit form using skills such as PHP PDO and SQL.</div>
+## <div align="center">I created Submit form using skills such as PHP PDO and SQL</div>
 
 ----
 
-## <div align="center">To download, copy the project by clicking "Fork"</div>
+### <div align="center">To download, copy the project by clicking "Fork"</div>
 
 ----
 
