@@ -29,10 +29,12 @@ button:hover {
     color: #754ef9;
     font-weight: bold;
     font-size: 30px;
+    height: 350px;
 }
 
 .error-message {
     color: red;
     font-weight: bold;
     font-size: 30px;
+    height: 350px;
 }
