@@ -24,7 +24,7 @@ $password = '';
 try {
     $pdo = new PDO($dsn, $user, $password);
     // Affichage d'un message de connexion réussie
-    echo "🎊 Connexion réussie";
+    echo "🎊 Connexion réussie!" . '<br>';
 } catch (PDOException $e) {
     // Affichage d'un message d'erreur en cas d'échec de la connexion
     echo "🥹 Échec de la connexion : " . $e->getMessage();
@@ -39,6 +39,8 @@ if(isset($_POST['nom'])){
 
     // Подготовка и выполнение SQL-запроса для вставки имени пользователя в таблицу "user"
     // Préparation et exécution de la requête SQL pour insérer le nom de l'utilisateur dans la table "user"
+
+    /*
     $sql = "INSERT INTO user (nom) VALUES (:nom)";
     $stmt = $pdo->prepare($sql);
     $stmt->bindParam(':nom',$nomuser);
@@ -47,6 +49,28 @@ if(isset($_POST['nom'])){
     // Вывод сообщения об успешном добавлении данных
     // Affichage d'un message de succès pour l'ajout des données
     echo "Ok ajouté";
+
+    */
+    // Vérification si le nom existe déjà dans la base de données
+    $sql_check = "SELECT COUNT(*) FROM user WHERE nom = :nom";
+    $stmt_check = $pdo->prepare($sql_check);
+    $stmt_check->bindParam(':nom', $nomuser);
+    $stmt_check->execute();
+    $count = $stmt_check->fetchColumn();
+
+    // Si le nom n'existe pas, on l'ajoute à la base de données
+    if($count == 0) {
+        // Préparation et exécution de la requête SQL pour insérer le nom de l'utilisateur dans la table "user"
+        $sql_insert = "INSERT INTO user (nom) VALUES (:nom)";
+        $stmt_insert = $pdo->prepare($sql_insert);
+        $stmt_insert->bindParam(':nom', $nomuser);
+        $stmt_insert->execute();
+        // Affichage d'un message de succès pour l'ajout des données
+        echo "Ok ajouté";
+    } else {
+        // Si le nom existe déjà, on affiche un message d'erreur
+        echo "Ce nom est déjà pris, choisissez une autre nom svp!";
+    }
 
     // Подготовка и выполнение SQL-запроса для выборки всех пользователей из таблицы "user"
     // Préparation et exécution de la requête SQL pour sélectionner tous les utilisateurs de la table "user"
