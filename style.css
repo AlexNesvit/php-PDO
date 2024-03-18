@@ -1,0 +1,38 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+    margin: 0;
+}
+
+form {
+    width: 200px;
+}
+
+button {
+    background-color: #754ef9;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+/* Style CSS pour le bouton au survol */
+button:hover {
+    background-color: #4CAF50;
+}
+
+.success-message {
+    color: #754ef9;
+    font-weight: bold;
+    font-size: 30px;
+}
+
+.alert {
+    color: red;
+    font-weight: bold;
+    font-size: 30px;
+}
