@@ -29,7 +29,7 @@
             //Ces lignes récupèrent les valeurs des champs du formulaire et les stockent dans des variables PHP:
             $nomuser = $_POST['nom'];
             $mail = $_POST['mail'];
-            $password = $_POST['password'];
+            $password = password_hash($_POST['password'], PASSWORD_DEFAULT); //password hash cryptée
             
             //Ces variables définissent les paramètres de connexion à la base de données MySQL:
             $dsn = 'mysql:host=localhost;dbname=bd-pdo';
